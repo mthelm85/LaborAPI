@@ -1,8 +1,8 @@
 module LaborAPI
 
 using HTTP
-using JSON
-using Tables
+using JSON3
+using StructTypes
 
 const BASE_URL = "https://apiv3.dol.gov/v3/get"
 
@@ -14,10 +14,9 @@ function get(endpoint::String, params::Dict{String, Union{String,Number}})
         query=params,
         require_ssl_verification=false
     )
-    dict = JSON.parse(String(res.body))["data"]
-    colnames = collect(keys(dict[1]))
-    data = [data[i][colnames[j]] for i in 1:length(data), j in 1:length(colnames)]
-    return Tables.table(data, header=Symbol.(colnames))
+    json_str = String(res.body)
+    JSON3.@generatetypes json_str
+    return JSON3.read(json_str, JSONTypes.Root).data
 end
 
 end
