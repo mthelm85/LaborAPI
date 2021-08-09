@@ -1,0 +1,13 @@
+name = "LaborAPI"
+uuid = "bb3e41ec-2f03-43ef-841c-a6b7ee41ebe2"
+authors = ["Matt Helm <helm.matthew@dol.gov>"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
