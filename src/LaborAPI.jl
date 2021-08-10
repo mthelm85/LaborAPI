@@ -2,7 +2,6 @@ module LaborAPI
 
 using HTTP
 using JSON3
-using StructTypes
 
 const BASE_URL = "https://apiv3.dol.gov/v3/get/"
 
@@ -17,8 +16,7 @@ function get(endpoint::String, params::Dict{String, Any})
         )
         if HTTP.status(res) == 200
             json_str = String(res.body)
-            JSON3.@generatetypes json_str :LaborAPITypes
-            return JSON3.read(json_str, LaborAPITypes.Root)
+            return JSON3.read(json_str)
         else
             return error("ERROR: Expected status code 200 but got status code: $(HTTP.status(res))")
         end
