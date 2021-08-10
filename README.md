@@ -23,3 +23,7 @@ endpoint = "whd/wh_enforcement"
 
 res = LaborAPI.get(endpoint, params)
 ```
+
+# DOL API
+
+For details about a specific endpoint, including accepted parameters, see [the Open Data Portal site](https://dataportal.dol.gov).
