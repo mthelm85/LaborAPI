@@ -15,8 +15,8 @@ function get(endpoint::String, params::Dict{String, Union{String,Number}})
         require_ssl_verification=false
     )
     json_str = String(res.body)
-    JSON3.@generatetypes json_str
-    return JSON3.read(json_str, JSONTypes.Root).data
+    JSON3.generatetypes(json_str, LaborAPITypes)
+    return JSON3.read(json_str, LaborAPITypes.Root).data
 end
 
 end
