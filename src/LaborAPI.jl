@@ -4,7 +4,7 @@ using HTTP
 using JSON3
 using StructTypes
 
-const BASE_URL = "https://apiv3.dol.gov/v3/get"
+const BASE_URL = "https://apiv3.dol.gov/v3/get/"
 
 function get(endpoint::String, params::Dict{String, Any}) 
     url = BASE_URL * endpoint
