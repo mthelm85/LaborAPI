@@ -18,7 +18,7 @@ function get(endpoint::String, params::Dict{String, Any})
         if HTTP.status(res) == 200
             json_str = String(res.body)
             JSON3.@generatetypes json_str :LaborAPITypes
-            return JSON3.read(json_str, LaborAPITypes.Root).data
+            return JSON3.read(json_str, LaborAPITypes.Root)
         else
             return error("ERROR: Expected status code 200 but got status code: $(HTTP.status(res))")
         end
